@@ -1,0 +1,927 @@
+.phishy-banner {
+  margin: 10px 0;
+  padding: 15px;
+  border-radius: 8px;
+  border-left: 4px solid;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+  animation: phishy-slide-in 0.3s ease-out;
+}
+
+@keyframes phishy-slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.phishy-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.phishy-status {
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phishy-confidence {
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.phishy-reasoning {
+  font-size: 13px;
+  opacity: 0.85;
+  line-height: 1.3;
+  margin-top: 4px;
+}
+
+.phishy-url-summary {
+  font-size: 12px;
+  opacity: 0.8;
+  padding: 6px 8px;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.phishy-api-status {
+  font-size: 12px;
+  opacity: 0.9;
+  padding: 4px 8px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 4px;
+  border-left: 2px solid #3b82f6;
+  animation: phishy-pulse 1.5s infinite;
+}
+
+.phishy-api-status.completed {
+  background: rgba(34, 197, 94, 0.1);
+  border-left-color: #22c55e;
+  animation: none;
+}
+
+.phishy-api-status.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-left-color: #ef4444;
+  animation: none;
+}
+
+/* Path Intelligence Styles */
+.phishy-path-warning-badge {
+  background: #f59e0b;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.phishy-path-intelligence {
+  margin-top: 15px;
+  padding: 12px;
+  background: #fef3c7;
+  border-left: 3px solid #f59e0b;
+  border-radius: 4px;
+}
+
+.phishy-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.phishy-warning-badge {
+  background: #dc2626;
+  color: white;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.phishy-path-warning-item {
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(245, 158, 11, 0.2);
+}
+
+.phishy-warning-url {
+  font-family: monospace;
+  font-size: 12px;
+  color: #0c4a6e;
+  margin-bottom: 4px;
+  word-break: break-all;
+}
+
+.phishy-warning-score {
+  font-size: 11px;
+  color: #dc2626;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.phishy-factor-tag {
+  display: inline-block;
+  background: #fbbf24;
+  color: #92400e;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+}
+
+.phishy-path-recommendation {
+  margin-top: 10px;
+  padding: 8px;
+  background: #fed7aa;
+  border-radius: 4px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.phishy-danger {
+  background-color: #fef2f2;
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+.phishy-safe {
+  background-color: #f0fdf4;
+  border-left-color: #22c55e;
+  color: #166534;
+}
+
+.phishy-analyzing {
+  background-color: #fef3c7;
+  border-left-color: #f59e0b;
+  color: #92400e;
+}
+
+.phishy-analyzing .phishy-status {
+  animation: phishy-pulse 1.5s infinite;
+}
+
+@keyframes phishy-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.phishy-config {
+  background-color: #e0f2fe;
+  border-left-color: #0ea5e9;
+  color: #0c4a6e;
+}
+
+.phishy-error {
+  background-color: #fef2f2;
+  border-left-color: #ef4444;
+  color: #991b1b;
+}
+
+.phishy-banner:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 600px) {
+  .phishy-banner {
+    margin: 8px 5px;
+    padding: 12px;
+    font-size: 13px;
+  }
+  
+  .phishy-status {
+    font-size: 14px;
+  }
+  
+  .phishy-confidence,
+  .phishy-reasoning {
+    font-size: 12px;
+  }
+}
+
+[data-phishy-processed] {
+  position: relative;
+}
+
+/* Banner Layout Updates */
+.phishy-banner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.phishy-actions {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.phishy-detailed-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: inherit;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.phishy-detailed-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.phishy-detailed-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Detailed Analysis Modal */
+.phishy-detailed-modal,
+.phishy-error-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.phishy-detailed-modal.phishy-modal-show,
+.phishy-error-modal.phishy-modal-show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.phishy-modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.phishy-modal-content {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.phishy-modal-show .phishy-modal-content {
+  transform: translateY(0);
+}
+
+.phishy-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+}
+
+.phishy-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.phishy-modal-close {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.phishy-modal-close:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Analysis Cards Grid */
+.phishy-analysis-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .phishy-analysis-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+/* Individual Analysis Cards */
+.phishy-analysis-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.phishy-analysis-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.phishy-analysis-card:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.phishy-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.phishy-card-icon {
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+}
+
+.phishy-card-header h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.phishy-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Prediction Results */
+.phishy-prediction {
+  margin-bottom: 12px;
+}
+
+.phishy-prediction-result {
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.phishy-prediction-result.phishing {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 2px solid #fca5a5;
+}
+
+.phishy-prediction-result.safe {
+  background: #f0fdf4;
+  color: #166534;
+  border: 2px solid #a7f3d0;
+}
+
+.phishy-prediction-result.unknown {
+  background: #f8fafc;
+  color: #475569;
+  border: 2px solid #cbd5e1;
+}
+
+/* Confidence Meter */
+.phishy-confidence-meter {
+  margin-bottom: 8px;
+}
+
+.phishy-confidence-bar {
+  width: 100%;
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.phishy-confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.phishy-confidence-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Risk Level Badge */
+.phishy-risk-level {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.phishy-risk-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.phishy-risk-badge.low {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.phishy-risk-badge.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.phishy-risk-badge.high {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.phishy-risk-badge.critical {
+  background: #991b1b;
+  color: white;
+  animation: phishy-critical-pulse 2s infinite;
+}
+
+@keyframes phishy-critical-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Analysis Method and Status */
+.phishy-analysis-method {
+  font-size: 13px;
+  color: #6b7280;
+  font-style: italic;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 12px;
+}
+
+.phishy-status-message {
+  font-size: 14px;
+  color: #6b7280;
+  padding: 8px 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+  border-left: 4px solid #d1d5db;
+}
+
+/* Recommendations */
+.phishy-recommendations ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.phishy-recommendations li {
+  margin: 4px 0;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* Threats Display */
+.phishy-threats ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.phishy-threats li {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* URLScan Specific Styles */
+.phishy-urlscan-score {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.phishy-score {
+  font-weight: 700;
+  color: #dc2626;
+}
+
+/* URL Statistics Display */
+.phishy-url-stats {
+  margin: 8px 0;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+}
+
+.phishy-url-count {
+  font-size: 13px;
+  color: #374151;
+  font-weight: 500;
+}
+
+.phishy-url-note {
+  margin-top: 4px;
+}
+
+.phishy-url-note small {
+  color: #f59e0b;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Scanned URLs List */
+.phishy-scanned-urls {
+  margin-top: 12px;
+}
+
+.phishy-scanned-urls strong {
+  font-size: 13px;
+  color: #374151;
+}
+
+.phishy-url-list {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phishy-url-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 10px;
+  background: #f9fafb;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.phishy-url-text {
+  flex: 1;
+  color: #4b5563;
+  font-family: monospace;
+  font-size: 11px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 8px;
+}
+
+.phishy-url-score {
+  font-weight: 600;
+  padding: 2px 6px;
+  border-radius: 3px;
+  min-width: 35px;
+  text-align: center;
+  font-size: 11px;
+}
+
+.phishy-url-score.safe {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.phishy-url-score.dangerous {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.phishy-engine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.phishy-engine-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.phishy-engine-name {
+  font-weight: 500;
+}
+
+.phishy-engine-verdict.malicious {
+  color: #dc2626;
+}
+
+.phishy-engine-verdict.clean {
+  color: #16a34a;
+}
+
+.phishy-external-link {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.phishy-external-link a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.phishy-external-link a:hover {
+  text-decoration: underline;
+}
+
+/* Modal Footer */
+.phishy-modal-footer {
+  padding: 16px 24px 24px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  border-radius: 0 0 16px 16px;
+}
+
+.phishy-timestamp {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Error Modal Styles */
+.phishy-error-content {
+  max-width: 400px;
+}
+
+.phishy-error-message {
+  padding: 20px 24px;
+  color: #374151;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Loading States for Async API Cards */
+.phishy-loading-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.phishy-loading-card::before {
+  background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0) !important;
+  animation: phishy-shimmer 1.5s infinite;
+}
+
+.phishy-loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.phishy-loading-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #f3f4f6;
+  border-top: 3px solid #667eea;
+  border-radius: 50%;
+  animation: phishy-spin 1s linear infinite;
+}
+
+.phishy-loading-text {
+  font-size: 14px;
+  color: #6b7280;
+  font-weight: 500;
+  max-width: 200px;
+  line-height: 1.4;
+}
+
+@keyframes phishy-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes phishy-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Card Update Animations */
+.phishy-analysis-card {
+  transition: all 0.5s ease;
+}
+
+.phishy-loading-card {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  background-size: 200% 100%;
+  animation: phishy-loading-background 2s infinite;
+}
+
+@keyframes phishy-loading-background {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth card content updates */
+.phishy-card-content {
+  transition: opacity 0.3s ease;
+}
+
+.phishy-loading-card .phishy-card-content {
+  opacity: 0.7;
+}
+
+/* Enhanced loading states for different card types */
+.phishy-safebrowsing-card.phishy-loading-card .phishy-card-icon {
+  animation: phishy-pulse-shield 2s infinite;
+}
+
+.phishy-urlscan-card.phishy-loading-card .phishy-card-icon {
+  animation: phishy-pulse-globe 2s infinite;
+}
+
+@keyframes phishy-pulse-shield {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1);
+  }
+}
+
+@keyframes phishy-pulse-globe {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1) rotate(0deg);
+  }
+  50% { 
+    opacity: 0.7; 
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+/* Success animation when cards update */
+@keyframes phishy-card-update {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.phishy-analysis-card:not(.phishy-loading-card) {
+  animation: phishy-card-update 0.5s ease-out;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .phishy-modal-overlay {
+    padding: 10px;
+  }
+  
+  .phishy-modal-content {
+    max-height: 95vh;
+  }
+  
+  .phishy-analysis-cards {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .phishy-modal-header,
+  .phishy-modal-footer {
+    padding: 16px;
+  }
+  
+  .phishy-detailed-btn {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .phishy-loading-spinner {
+    width: 24px;
+    height: 24px;
+    border-width: 2px;
+  }
+  
+  .phishy-loading-text {
+    font-size: 13px;
+  }
+}
+
+.phishy-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 999;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.phishy-badge.safe {
+  background: #22c55e;
+  color: white;
+}
+
+.phishy-badge.danger {
+  background: #ef4444;
+  color: white;
+  animation: phishy-warning-pulse 2s infinite;
+}
+
+@keyframes phishy-warning-pulse {
+  0%, 100% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.6), 0 0 0 4px rgba(239, 68, 68, 0.2);
+  }
+}

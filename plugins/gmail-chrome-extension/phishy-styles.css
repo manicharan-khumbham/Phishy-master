@@ -1,0 +1,522 @@
+/* Phishy AI Gmail Extension Styles */
+
+/* Flag Button */
+.phishy-flag-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    margin-right: 8px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 20px !important;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.phishy-flag-btn:hover {
+    background: linear-gradient(135deg, #ee5a24, #d63031) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.phishy-flag-icon {
+    font-size: 14px;
+}
+
+.phishy-flag-text {
+    white-space: nowrap;
+}
+
+/* Suspicious Email Warning */
+.phishy-warning {
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    background: rgba(255, 193, 7, 0.9);
+    color: #856404;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.phishy-warning-icon {
+    font-size: 12px;
+}
+
+/* Dialog Overlay */
+.phishy-dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.phishy-dialog {
+    background: white;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: phishyFadeIn 0.2s ease-out;
+}
+
+@keyframes phishyFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.phishy-dialog-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #e1e4e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.phishy-dialog-header h3 {
+    margin: 0;
+    color: #24292e;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.phishy-dialog-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #6a737d;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.phishy-dialog-close:hover {
+    background: #f6f8fa;
+    color: #24292e;
+}
+
+.phishy-dialog-content {
+    padding: 16px 24px;
+}
+
+.phishy-dialog-content p {
+    margin: 0 0 16px;
+    color: #586069;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.phishy-dialog-content label {
+    display: block;
+    margin: 16px 0 6px;
+    color: #24292e;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.phishy-select,
+.phishy-input,
+.phishy-textarea {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    color: #24292e;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.phishy-select:focus,
+.phishy-input:focus,
+.phishy-textarea:focus {
+    outline: none;
+    border-color: #0366d6;
+    box-shadow: 0 0 0 3px rgba(3, 102, 214, 0.1);
+}
+
+.phishy-textarea {
+    min-height: 80px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.phishy-dialog-footer {
+    padding: 16px 24px 20px;
+    border-top: 1px solid #e1e4e8;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.phishy-btn {
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.phishy-btn-primary {
+    background: #0366d6;
+    color: white;
+    border-color: #0366d6;
+}
+
+.phishy-btn-primary:hover {
+    background: #0256cc;
+    border-color: #0256cc;
+}
+
+.phishy-btn-secondary {
+    background: #fafbfc;
+    color: #24292e;
+    border-color: #d1d5da;
+}
+
+.phishy-btn-secondary:hover {
+    background: #f3f4f6;
+    border-color: #c6cbd1;
+}
+
+/* Analysis Result Styles */
+.phishy-analysis-result {
+    background: #f6f8fa;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+}
+
+.phishy-threat-level {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.phishy-threat-level.low {
+    background: #d4edda;
+    color: #155724;
+}
+
+.phishy-threat-level.medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.phishy-threat-level.high {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.phishy-threat-level.critical {
+    background: #f5c6cb;
+    color: #491217;
+}
+
+.phishy-confidence {
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: #586069;
+}
+
+.phishy-explanation h4,
+.phishy-recommendations h4 {
+    margin: 0 0 8px;
+    color: #24292e;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.phishy-explanation p {
+    margin: 0 0 12px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.phishy-recommendations ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.phishy-recommendations li {
+    margin-bottom: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+/* Configuration Help */
+.phishy-help {
+    background: #f1f8ff;
+    border: 1px solid #c8e1ff;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 16px 0;
+}
+
+.phishy-help p {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: #0366d6;
+}
+
+.phishy-help p:last-child {
+    margin-bottom: 0;
+}
+
+.phishy-help strong {
+    color: #032f62;
+}
+
+/* Auto-scan warning styles */
+.phishy-email-warning {
+    z-index: 10000 !important;
+    animation: phishyWarningSlideIn 0.5s ease-out !important;
+}
+
+.phishy-email-warning h4 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.phishy-warning-high {
+    border: 2px solid #dc3545 !important;
+    border-radius: 8px !important;
+}
+
+.phishy-warning-medium {
+    border: 2px solid #fd7e14 !important;
+    border-radius: 6px !important;
+}
+
+.phishy-btn-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+    font-weight: bold !important;
+}
+
+.phishy-btn-warning:hover {
+    background-color: #e0a800 !important;
+}
+
+.phishy-btn-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.phishy-btn-danger:hover {
+    background-color: #c82333 !important;
+}
+
+/* Scanning indicator */
+.phishy-scanning-indicator {
+    z-index: 9999 !important;
+}
+
+@keyframes phishySpin {
+    from {
+        transform: rotate(0deg) !important;
+    }
+    to {
+        transform: rotate(360deg) !important;
+    }
+}
+
+.phishy-scanning-indicator span {
+    animation: phishySpin 1s linear infinite !important;
+}
+
+@keyframes phishyWarningSlideIn {
+    from {
+        transform: translateY(-20px) !important;
+        opacity: 0 !important;
+    }
+    to {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Notifications */
+.phishy-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    max-width: 400px;
+    animation: phishySlideIn 0.3s ease-out;
+}
+
+@keyframes phishySlideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.phishy-notification-content {
+    background: white;
+    border-radius: 8px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-left: 4px solid #28a745;
+}
+
+.phishy-notification-error .phishy-notification-content {
+    border-left-color: #dc3545;
+}
+
+.phishy-notification-info .phishy-notification-content {
+    border-left-color: #17a2b8;
+}
+
+.phishy-notification-icon {
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.phishy-notification-text {
+    flex: 1;
+    font-size: 14px;
+    color: #24292e;
+    line-height: 1.4;
+}
+
+.phishy-notification-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #6a737d;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.phishy-notification-close:hover {
+    background: #f6f8fa;
+    color: #24292e;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .phishy-dialog {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .phishy-flag-text {
+        display: none;
+    }
+    
+    .phishy-flag-btn {
+        padding: 8px;
+    }
+    
+    .phishy-notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* Gmail-specific adjustments */
+@media screen and (max-width: 1200px) {
+    .phishy-flag-text {
+        display: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .phishy-dialog {
+        background: #1e1e1e;
+        color: #e1e4e8;
+    }
+    
+    .phishy-dialog-header {
+        border-bottom-color: #333;
+    }
+    
+    .phishy-dialog-footer {
+        border-top-color: #333;
+    }
+    
+    .phishy-dialog-header h3 {
+        color: #e1e4e8;
+    }
+    
+    .phishy-select,
+    .phishy-input,
+    .phishy-textarea {
+        background: #2d2d2d;
+        border-color: #444;
+        color: #e1e4e8;
+    }
+    
+    .phishy-analysis-result {
+        background: #2d2d2d;
+    }
+    
+    .phishy-notification-content {
+        background: #2d2d2d;
+        color: #e1e4e8;
+    }
+    
+    .phishy-notification-text {
+        color: #e1e4e8;
+    }
+}

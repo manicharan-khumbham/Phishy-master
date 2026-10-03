@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ Phishing Awareness Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .alert-box {
+            background: #ffe6e6;
+            border: 2px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .alert-text {
+            color: #c0392b;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+        
+        .tips {
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .tips h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .tips ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tips li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+            color: #555;
+        }
+        
+        .tips li::before {
+            content: '🔒';
+            position: absolute;
+            left: 0;
+        }
+        
+        .button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .stats {
+            background: #e8f5e8;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">⚠️</div>
+        <h1>You Just Clicked a Phishing Link!</h1>
+        
+        <div class="alert-box">
+            <div class="alert-text">🎯 This was a simulated phishing attack</div>
+            <p>Don't worry - this was part of your security training. No harm was done, but in a real attack, your credentials could have been compromised.</p>
+        </div>
+        
+        <p class="description">
+            Phishing attacks are one of the most common ways cybercriminals steal personal information, passwords, and financial data. You've just experienced how easy it can be to fall for these deceptive emails.
+        </p>
+        
+        <div class="stats">
+            <div class="stat-number">91%</div>
+            <p>of cyber attacks start with a phishing email</p>
+        </div>
+        
+        <div class="tips">
+            <h3>🛡️ How to Protect Yourself:</h3>
+            <ul>
+                <li>Always verify the sender's email address carefully</li>
+                <li>Look for urgent language and pressure tactics</li>
+                <li>Hover over links to see the actual destination</li>
+                <li>Never enter credentials from email links</li>
+                <li>When in doubt, contact the organization directly</li>
+                <li>Keep your software and browsers updated</li>
+                <li>Use two-factor authentication when available</li>
+            </ul>
+        </div>
+        
+        <div class="tips">
+            <h3>🚩 Red Flags in This Email:</h3>
+            <ul>
+                <li>Urgent language ("Failure to act may result...")</li>
+                <li>Generic greeting ("Dear user")</li>
+                <li>Suspicious link that doesn't match the sender</li>
+                <li>Creates fear about account security</li>
+            </ul>
+        </div>
+        
+        <button class="button" onclick="window.close()">I Understand - Close Window</button>
+        
+        <p style="margin-top: 30px; color: #7f8c8d; font-size: 0.9rem;">
+            This training helps improve your organization's cybersecurity awareness.<br>
+            Stay vigilant and keep learning! 🔐
+        </p>
+    </div>
+</body>
+</html>

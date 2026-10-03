@@ -1,0 +1,83 @@
+{
+  "hosting": {
+    "public": "frontend",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/comprehensive/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/detector/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/llm/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/smtp/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/track/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/analytics/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/smart/**",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "/health",
+        "run": {
+          "serviceId": "phishy-backend",
+          "region": "us-central1"
+        }
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(js|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=3600"
+          }
+        ]
+      }
+    ]
+  }
+}

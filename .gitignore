@@ -1,0 +1,175 @@
+# ==========================================
+# Phishy Project - Git Ignore
+# ==========================================
+
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env/
+.python-version
+
+# ------------------------------
+# Environment / Secrets
+# ------------------------------
+.env
+.env.*
+!.env.example
+
+# API keys / credentials
+*.pem
+*.key
+*.crt
+credentials.json
+service-account.json
+firebase-service-account.json
+
+# ------------------------------
+# SQLite / Local Databases
+# ------------------------------
+*.db
+*.sqlite
+*.sqlite3
+
+# Phishy local database
+backend/data/
+
+# ------------------------------
+# Logs
+# ------------------------------
+*.log
+logs/
+log/
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ------------------------------
+# Python build/cache
+# ------------------------------
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ------------------------------
+# Machine Learning
+# ------------------------------
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.onnx
+*.joblib
+*.pkl
+*.pickle
+
+# Local model/cache directories
+models/
+model/
+.cache/
+huggingface_cache/
+transformers_cache/
+
+# ------------------------------
+# Jupyter
+# ------------------------------
+.ipynb_checkpoints/
+
+# ------------------------------
+# Node / JavaScript
+# ------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.cache/
+
+# ------------------------------
+# Firebase
+# ------------------------------
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+
+# ------------------------------
+# Google Cloud
+# ------------------------------
+.gcloud/
+*.gcloudignore
+
+# ------------------------------
+# OS files
+# ------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ------------------------------
+# IDE / Editors
+# ------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+
+# ------------------------------
+# Test / Coverage
+# ------------------------------
+.pytest_cache/
+coverage/
+htmlcov/
+
+# ------------------------------
+# Temporary files
+# ------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ------------------------------
+# Local development files
+# ------------------------------
+*.local
+*.local.*
