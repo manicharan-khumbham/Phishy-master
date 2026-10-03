@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — ThreatLens</title>
+  <meta name="description" content="Sign in to ThreatLens, an AI-powered multi-signal email security platform." />
+  <style>
+    :root{
+      --bg:#06091f;
+      --panel:#0d1238;
+      --panel2:#11184a;
+      --border:rgba(122,116,255,.26);
+      --text:#f7f7ff;
+      --muted:#9da6c7;
+      --purple:#7847ff;
+      --violet:#a14dff;
+      --blue:#5798ff;
+      --green:#52dfa9;
+      --danger:#ff6a83;
+      --shadow:0 30px 90px rgba(0,0,0,.48);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%,rgba(77,81,255,.14),transparent 28%),
+        radial-gradient(circle at 90% 85%,rgba(154,71,255,.13),transparent 26%),
+        linear-gradient(135deg,#06091f,#040719 58%,#080a21);
+      overflow:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    .page{
+      width:min(1420px,100%);
+      height:100%;
+      min-height:700px;
+      margin:auto;
+      padding:26px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .shell{
+      width:min(1200px,100%);
+      min-height:670px;
+      display:grid;
+      grid-template-columns:1.06fr .94fr;
+      border:1px solid rgba(128,118,255,.30);
+      border-radius:24px;
+      overflow:hidden;
+      background:rgba(7,11,34,.84);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(18px);
+    }
+
+    /* LEFT / LOGIN */
+    .login-side{
+      padding:46px 58px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      position:relative;
+      background:
+        linear-gradient(180deg,rgba(14,19,56,.96),rgba(7,11,34,.96));
+    }
+    .login-side:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(rgba(100,96,189,.045) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(100,96,189,.045) 1px,transparent 1px);
+      background-size:36px 36px;
+      mask-image:linear-gradient(to bottom,black,transparent 86%);
+    }
+    .content{position:relative;z-index:2;width:min(450px,100%);margin:auto}
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      letter-spacing:-.02em;
+      font-size:17px;
+      margin-bottom:50px;
+    }
+    .brand-mark{
+      width:31px;height:31px;
+      display:grid;place-items:center;
+      border-radius:9px;
+      background:linear-gradient(145deg,#605bff,#a34bff);
+      box-shadow:0 0 25px rgba(125,77,255,.42);
+    }
+    .eyebrow{
+      color:#8c83ff;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+    h1{
+      margin:0;
+      font-size:39px;
+      line-height:1.05;
+      letter-spacing:-.045em;
+    }
+    .intro{
+      color:var(--muted);
+      line-height:1.65;
+      font-size:13px;
+      max-width:420px;
+      margin:12px 0 28px;
+    }
+    .google{
+      width:100%;
+      height:49px;
+      border:1px solid rgba(133,131,212,.35);
+      border-radius:10px;
+      background:rgba(20,25,68,.74);
+      color:#f5f6ff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:11px;
+      font-size:13px;
+      font-weight:800;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .google:hover,.email-submit:hover{
+      transform:translateY(-1px);
+      border-color:rgba(148,137,255,.68);
+    }
+    .g-logo{
+      width:20px;height:20px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      background:#fff;
+      font-weight:900;
+      font-size:14px;
+      color:#4285f4;
+      box-shadow:0 0 0 1px rgba(255,255,255,.18);
+    }
+    .divider{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      color:#6f789f;
+      font-size:10px;
+      margin:23px 0;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+    .divider:before,.divider:after{
+      content:"";
+      height:1px;
+      flex:1;
+      background:rgba(117,111,204,.18);
+    }
+    .field{margin-bottom:15px}
+    label{
+      display:block;
+      color:#afb7d4;
+      font-size:11px;
+      font-weight:700;
+      margin-bottom:7px;
+    }
+    .input-wrap{position:relative}
+    .input-icon{
+      position:absolute;
+      left:13px;
+      top:50%;
+      transform:translateY(-50%);
+      color:#7783b5;
+      font-size:14px;
+    }
+    input{
+      width:100%;
+      height:47px;
+      border:1px solid rgba(116,117,203,.28);
+      background:#090e31;
+      border-radius:10px;
+      padding:0 13px 0 39px;
+      color:#fff;
+      outline:none;
+    }
+    input:focus{
+      border-color:#8f7cff;
+      box-shadow:0 0 0 3px rgba(126,85,255,.11);
+    }
+    .password-wrap input{padding-right:45px}
+    .password-toggle{
+      border:0;
+      background:none;
+      color:#7783b4;
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      cursor:pointer;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin:8px 0 21px;
+      font-size:11px;
+    }
+    .remember{display:flex;align-items:center;gap:8px;color:#8e97b7}
+    .remember input{
+      width:14px;height:14px;padding:0;accent-color:#8050ff;
+    }
+    .forgot{color:#ae91ff;font-weight:700}
+    .email-submit{
+      width:100%;
+      height:49px;
+      border:0;
+      border-radius:10px;
+      background:linear-gradient(135deg,#7044ff,#a048ff);
+      color:#fff;
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      box-shadow:0 14px 34px rgba(110,56,255,.27);
+      transition:.2s ease;
+    }
+    .bottom{
+      text-align:center;
+      color:#8089a8;
+      font-size:11px;
+      margin-top:20px;
+    }
+    .bottom a{color:#b594ff;font-weight:800}
+    .secure-note{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      color:#69738f;
+      font-size:10px;
+      margin-top:28px;
+    }
+    .shield-mini{color:#78a4ff}
+
+    /* RIGHT / VISUAL */
+    .visual-side{
+      min-height:670px;
+      position:relative;
+      overflow:hidden;
+      background:#050a25;
+      border-left:1px solid rgba(121,111,221,.17);
+    }
+    .visual-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.38;
+      filter:saturate(1.15) contrast(1.05);
+      transform:scale(1.08);
+    }
+    .visual-overlay{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(180deg,rgba(5,9,32,.30),rgba(4,7,24,.77)),
+        linear-gradient(90deg,rgba(5,7,25,.12),rgba(24,8,70,.28));
+    }
+    .visual-grid{
+      position:absolute;inset:0;
+      background:
+        linear-gradient(rgba(111,107,200,.055) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(111,107,200,.055) 1px,transparent 1px);
+      background-size:36px 36px;
+      mask-image:linear-gradient(to bottom,black,transparent);
+    }
+    .visual-content{
+      position:absolute;
+      inset:0;
+      padding:48px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+    .visual-top{max-width:420px}
+    .visual-kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;
+      border:1px solid rgba(121,121,255,.30);
+      border-radius:999px;
+      background:rgba(34,28,92,.43);
+      color:#c4c6e9;font-size:10px;font-weight:800;
+    }
+    .visual-dot{width:6px;height:6px;border-radius:50%;background:#62e5ff;box-shadow:0 0 12px #62e5ff}
+    .visual-title{
+      margin:16px 0 10px;
+      font-size:38px;
+      line-height:1.08;
+      letter-spacing:-.04em;
+    }
+    .visual-title span{
+      background:linear-gradient(90deg,#66b8ff,#c168ff);
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+    }
+    .visual-copy{
+      margin:0;
+      color:#a8b0d0;
+      font-size:12px;
+      line-height:1.65;
+      max-width:390px;
+    }
+    .glass-card{
+      width:min(410px,100%);
+      margin-top:auto;
+      margin-left:auto;
+      border:1px solid rgba(133,125,247,.32);
+      border-radius:14px;
+      padding:16px;
+      background:rgba(11,16,48,.68);
+      backdrop-filter:blur(12px);
+      box-shadow:0 25px 55px rgba(0,0,0,.28);
+    }
+    .glass-head{display:flex;align-items:center;justify-content:space-between}
+    .glass-title{font-size:11px;font-weight:800}
+    .safe{color:#53e0a4;font-size:10px;font-weight:800}
+    .glass-score{display:flex;align-items:flex-end;gap:8px;margin:15px 0 12px}
+    .big-score{font-size:34px;font-weight:950}
+    .score-copy{color:#8892b6;font-size:10px;padding-bottom:4px}
+    .line{height:6px;border-radius:9px;background:rgba(104,107,187,.18);overflow:hidden}
+    .line span{display:block;height:100%;width:82%;background:linear-gradient(90deg,#517bff,#a253ff);border-radius:inherit}
+    .glass-list{display:grid;gap:8px;margin-top:13px}
+    .glass-row{
+      display:flex;align-items:center;justify-content:space-between;
+      font-size:10px;color:#9da6c5
+    }
+    .status{font-weight:800}
+    .status.good{color:#53e0a4}.status.warn{color:#ffca61}.status.bad{color:#ff7388}
+    .copyright{
+      position:absolute;
+      bottom:17px;
+      right:48px;
+      color:#656f91;
+      font-size:9px;
+    }
+
+    @media(max-width:900px){
+      body{overflow:auto}
+      .page{padding:0;min-height:100%}
+      .shell{
+        width:100%;min-height:100vh;border-radius:0;border:0;
+        grid-template-columns:1fr;
+      }
+      .visual-side{display:none}
+      .login-side{min-height:100vh;padding:38px 25px}
+      .brand{margin-bottom:70px}
+    }
+    @media(max-width:480px){
+      .login-side{padding:25px 18px}
+      h1{font-size:33px}
+      .intro{font-size:12px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="shell">
+
+    <section class="login-side">
+      <div class="content">
+        <a href="#" class="brand">
+          <span class="brand-mark">🛡</span>
+          <span>ThreatLens</span>
+        </a>
+
+        <div class="eyebrow">Secure Access</div>
+        <h1>Welcome back.</h1>
+        <p class="intro">
+          Sign in to analyze suspicious emails, review threat intelligence,
+          monitor security awareness, and protect your organization with ThreatLens.
+        </p>
+
+        <button class="google" type="button" onclick="googleDemo()">
+          <span class="g-logo">G</span>
+          Continue with Google
+        </button>
+
+        <div class="divider">or continue with email</div>
+
+        <form id="loginForm" onsubmit="loginDemo(event)">
+          <div class="field">
+            <label for="email">Email address</label>
+            <div class="input-wrap">
+              <span class="input-icon">✉</span>
+              <input id="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="password">Password</label>
+            <div class="input-wrap password-wrap">
+              <span class="input-icon">⌁</span>
+              <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required />
+              <button class="password-toggle" type="button" onclick="togglePassword()" aria-label="Show password">◉</button>
+            </div>
+          </div>
+
+          <div class="row">
+            <label class="remember">
+              <input type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a class="forgot" href="#" onclick="forgotDemo(event)">Forgot password?</a>
+          </div>
+
+          <button class="email-submit" type="submit">Sign In →</button>
+        </form>
+
+        <div class="bottom">
+          New to ThreatLens? <a href="threatlens_register.html">Create an account</a>
+        </div>
+
+        <div class="secure-note">
+          <span class="shield-mini">🛡</span>
+          Protected by secure authentication · Privacy-first architecture
+        </div>
+      </div>
+    </section>
+
+    <aside class="visual-side">
+      <img class="visual-bg" src="threatlens_login_visual.png" alt="ThreatLens cybersecurity visualization" />
+      <div class="visual-overlay"></div>
+      <div class="visual-grid"></div>
+
+      <div class="visual-content">
+        <div class="visual-top">
+          <div class="visual-kicker"><span class="visual-dot"></span> AI-POWERED EMAIL SECURITY</div>
+          <div class="visual-title">See beyond<br><span>the email.</span></div>
+          <p class="visual-copy">
+            One workspace for multi-signal detection, AI explanations, URL intelligence,
+            attachment analysis, awareness training and security analytics.
+          </p>
+        </div>
+
+        <div class="glass-card">
+          <div class="glass-head">
+            <div class="glass-title">ThreatLens Protection Status</div>
+            <div class="safe">● ACTIVE</div>
+          </div>
+          <div class="glass-score">
+            <div class="big-score">82</div>
+            <div class="score-copy">Security posture<br>sample score</div>
+          </div>
+          <div class="line"><span></span></div>
+          <div class="glass-list">
+            <div class="glass-row"><span>URL reputation</span><span class="status good">Protected</span></div>
+            <div class="glass-row"><span>Sender analysis</span><span class="status good">Protected</span></div>
+            <div class="glass-row"><span>Attachment analysis</span><span class="status warn">Monitoring</span></div>
+            <div class="glass-row"><span>AI explanations</span><span class="status good">Enabled</span></div>
+          </div>
+        </div>
+
+        <div class="copyright">Team Kaizen · ThreatLens</div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<script>
+  function togglePassword(){
+    const input = document.getElementById('password');
+    input.type = input.type === 'password' ? 'text' : 'password';
+  }
+
+  function googleDemo(){
+    alert('Google Sign-In UI is ready. Connect this button to your OAuth provider.');
+  }
+
+  function loginDemo(event){
+    event.preventDefault();
+    alert('Login UI is ready. Connect this form to your FastAPI authentication endpoint.');
+  }
+
+  function forgotDemo(event){
+    event.preventDefault();
+    alert('Connect this link to your password-reset flow.');
+  }
+</script>
+
+</body>
+</html>
