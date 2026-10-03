@@ -17,6 +17,9 @@
 - **Dumpala Akshaya**
 
 ---
+<img width="1892" height="877" alt="image" src="https://github.com/user-attachments/assets/6b589579-02f3-4eda-844b-fbcad1b54e35" />
+
+<img width="1917" height="881" alt="image" src="https://github.com/user-attachments/assets/3e1bb771-8149-4a00-a458-cd351ec295ff" />
 
 ## 🚀 About the Project
 
