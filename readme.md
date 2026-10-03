@@ -36,20 +36,215 @@ The platform combines machine learning, URL reputation, sender and IP analysis, 
 ---
 
 ## ✨ Key Features
+# 🛡️ ThreatLens — AI-Powered Phishing Detection & Security Awareness Platform
 
-- 🔍 **Multi-Signal Email Analysis**
-- 🤖 **AI-Powered Security Explanations**
-- 🧠 **Machine Learning Risk Scoring**
-- 🌐 **URL Reputation Analysis**
-- 📧 **Sender & Email Header Analysis**
-- 🖥️ **IP Reputation Analysis**
-- 📎 **Attachment Safety Analysis**
-- 📊 **Security Analytics & Reports**
-- 🎯 **Phishing Awareness Training**
-- 🌐 **Gmail Chrome Extension**
-- 📧 **SMTP Email Integration**
-- 🔐 **User Registration & Login**
-- 💾 **SQLite Database**
+ThreatLens is an AI-powered email security and phishing awareness platform designed to detect suspicious emails, URLs, domains, senders, IP addresses, and attachments while providing understandable security explanations and awareness training.
+
+The platform combines **AI/ML detection, threat intelligence, email analysis, phishing simulations, security analytics, and user awareness** into a single security platform.
+
+---
+
+# 🚀 Feature Levels
+
+ThreatLens features are organized into three levels:
+
+- 🟢 **Level 0 — Foundation & Basic Security**
+- 🟡 **Level 1 — Intelligent Detection & Analysis**
+- 🔴 **Level 2 — Advanced AI, Automation & Phishing Awareness**
+
+---
+
+# 🟢 Level 0 — Foundation & Basic Security
+
+Level 0 provides the basic platform infrastructure required to operate ThreatLens.
+
+## 1. 🌐 Web-Based Security Platform
+
+- ThreatLens web interface
+- Responsive security dashboard
+- Security-focused user interface
+- Landing page and application navigation
+- Security reports and analytics interface
+
+## 2. 🔐 User Registration & Login
+
+- User registration
+- User login
+- Demo authentication flow
+- User account management foundation
+- Secure authentication architecture
+
+## 3. 💾 SQLite Database
+
+- Local SQLite database support
+- User information storage
+- Security analysis data storage
+- Detection history storage
+- Application data persistence
+
+## 4. ⚡ FastAPI Backend
+
+- FastAPI-based backend
+- REST API architecture
+- API endpoints for security analysis
+- Request validation
+- Backend service orchestration
+
+## 5. 📧 Email Input & Analysis Interface
+
+Users can submit suspicious email information for analysis.
+
+Supported information includes:
+
+- Email content
+- Email headers
+- Sender information
+- URLs contained in emails
+- Attachments
+- Suspicious indicators
+
+## 6. 📊 Security Dashboard
+
+The dashboard provides an overview of security activity.
+
+Example metrics include:
+
+- Emails analyzed
+- Phishing detections
+- User awareness score
+- Active campaigns
+- Detection history
+- Security analytics
+
+## 7. 📋 Security Reports
+
+Generate understandable security reports containing:
+
+- Threat classification
+- Risk score
+- Suspicious indicators
+- Detection results
+- Recommended security actions
+
+---
+
+# 🟡 Level 1 — Intelligent Detection & Analysis
+
+Level 1 introduces automated security analysis and multiple detection signals.
+
+## 1. 🔍 Multi-Signal Email Analysis
+
+ThreatLens analyzes multiple security signals instead of relying on a single detection method.
+
+Signals include:
+
+- Email content
+- Email headers
+- Sender information
+- URLs
+- Domains
+- IP addresses
+- Attachments
+- Reputation information
+
+Combining multiple signals improves the ability to identify suspicious emails.
+
+---
+
+## 2. 📧 Sender & Email Header Analysis
+
+Analyze email sender information and headers for suspicious indicators.
+
+Analysis can include:
+
+- Sender identity
+- Sender domain
+- Email routing information
+- SPF indicators
+- DKIM indicators
+- DMARC indicators
+- Header inconsistencies
+- Suspicious sender patterns
+- Possible spoofing indicators
+
+---
+
+## 3. 🌐 URL Analysis
+
+Analyze URLs contained inside suspicious emails.
+
+Detection can include:
+
+- Suspicious URLs
+- Malicious links
+- Redirects
+- URL reputation
+- Domain reputation
+- Typosquatting indicators
+- Suspicious domain structures
+- Phishing URLs
+
+---
+
+## 4. 🌍 Domain Reputation Analysis
+
+Evaluate domains associated with suspicious messages.
+
+Possible signals include:
+
+- Domain reputation
+- Suspicious domains
+- Newly observed domains
+- Domain similarity
+- Typosquatting
+- Reputation intelligence
+
+---
+
+## 5. 🖥️ IP Reputation Analysis
+
+Analyze IP addresses associated with email infrastructure.
+
+Possible analysis includes:
+
+- IP reputation
+- Threat intelligence
+- Suspicious IP indicators
+- Geographic information
+- Known malicious infrastructure
+
+---
+
+## 6. 📎 Attachment Safety Analysis
+
+Analyze email attachments for potentially dangerous content.
+
+Supported security concepts include:
+
+- Suspicious file detection
+- File type analysis
+- Malware indicators
+- Risky attachment detection
+- Suspicious attachment behavior
+
+---
+
+## 7. 🧠 Machine Learning Risk Scoring
+
+Machine learning can be used to evaluate security indicators and produce a risk score.
+
+Example:
+
+```text
+Risk Score: 85 / 100
+
+Classification: HIGH RISK
+
+Indicators:
+✓ Suspicious URL
+✓ Sender domain spoofing
+✓ Suspicious attachment
+✓ Credential theft indicators
 
 ---
 
